@@ -17,10 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from base import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('stad/<str:city_name>', views.stad, name='stad'),
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'base.views.error_404'
