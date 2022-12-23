@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base',
     'form',
+    'rest_framework',
 ]
 
 STATIC_URL = 'static/'
