@@ -1,5 +1,8 @@
-from .models import City, Hotel
+from .models import *
 from django.views import generic
+from rest_framework import viewsets
+from .serializers import *
+from rest_framework import permissions
 # Create your views here.
 
 class Index(generic.ListView):
@@ -32,3 +35,13 @@ class HotelDetail(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['data'] = City.objects.values('city_name').distinct()
         return context
+
+class CityViewSet(viewsets.ModelViewSet):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class HotelViewSet(viewsets.ModelViewSet):
+    queryset = Hotel.objects.all()
+    serializer_class = HotelSerializer
+    permission_classes = [permissions.IsAuthenticated]
