@@ -6,7 +6,7 @@ class CitySerializer(serializers.HyperlinkedModelSerializer):
         model = City
         fields = '__all__'
 
-class HotelSerializer(serializers.HyperlinkedModelSerializer):
+class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = '__all__'

@@ -3,6 +3,7 @@ from django.views import generic
 from rest_framework import viewsets
 from .serializers import *
 from rest_framework import permissions
+from rest_framework import generics
 # Create your views here.
 
 class Index(generic.ListView):
@@ -41,7 +42,10 @@ class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class HotelViewSet(viewsets.ModelViewSet):
+class HotelViewSet(generics.DestroyAPIView):
     queryset = Hotel.objects.all()
     serializer_class = HotelSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return Hotel.objects.get(id=self.kwargs['id'])
