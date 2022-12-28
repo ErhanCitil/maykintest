@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from .serializers import *
 from rest_framework import permissions
 from rest_framework import generics
+import requests
 # Create your views here.
 
 class Index(generic.ListView):
@@ -41,6 +42,10 @@ class CityViewSet(viewsets.ModelViewSet):
     queryset = City.objects.all()
     serializer_class = CitySerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_api_data(self, request):
+        request = requests.get('http://routercity')
+        return request.json()
 
 class HotelViewSet(generics.DestroyAPIView):
     queryset = Hotel.objects.all()
