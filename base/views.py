@@ -5,6 +5,7 @@ from .serializers import *
 from rest_framework import permissions
 from rest_framework import generics
 import requests
+from django.shortcuts import render
 # Create your views here.
 
 class Index(generic.ListView):
@@ -53,3 +54,6 @@ class HotelViewSet(generics.DestroyAPIView):
 
     def get_object(self):
         return Hotel.objects.get(id=self.kwargs['id'])
+
+def test(request):
+    return render(request, 'test.html')

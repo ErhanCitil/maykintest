@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load cms_tags sekizai_tags %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,10 +9,13 @@
     <title>Maykin Booking</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    {% render_block "css" %}
   </head>
   <body>
     {% include 'components/header.html' %}
-
+    {% cms_toolbar %}
+    {% placeholder "content" %}
+    {% render_block "js" %}
     <h1 class="font-bold text-center text-3xl p-2">Maykin Booking</h1>
 
     <p class="text-center text-wrap p-4">
