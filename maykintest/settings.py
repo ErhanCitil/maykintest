@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'base',
     'form',
     'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 STATIC_URL = 'static/'

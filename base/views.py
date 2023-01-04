@@ -41,7 +41,6 @@ class HotelDetail(generic.ListView):
 class CityViewSet(viewsets.ModelViewSet):
     queryset = City.objects.all()
     serializer_class = CitySerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get_api_data(self, request):
         request = requests.get('http://routercity')
