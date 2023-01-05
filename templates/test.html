@@ -8,5 +8,7 @@
         {% cms_toolbar %}
         {% placeholder "content" %}
         {% render_block "js" %}
+
+        <h1>Hello {% if request.user.is_authenticated %}{{ request.user }}{% else %}Guest{% endif %}</h1>
     </body>
 </html>
